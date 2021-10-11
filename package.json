@@ -1,0 +1,48 @@
+{
+  "name": "WechattoMarkdown",
+  "version": "1.0.0",
+  "description": "解析微信文章为markdown",
+  "author": "Ryan-liu",
+  "main": "./dist/index.es.js",
+  "files": [
+    "dist/**/*.js"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-eslint": "^8.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@ryan-liu/eslint-config-jsx-config": "^1.0.2",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "rollup": "^2.57.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "dev": "yarn build --watch",
+    "build": "rollup -c rollup.config.js",
+    "lint": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix --quiet"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "markdown-utils": "^1.0.0"
+  }
+}
