@@ -5,7 +5,13 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 
 interface File {
+    /**
+     * 是否需要生成预览 md 文件
+     */
     getFile: boolean
+    /**
+     * 预览 md 文件的命名，默认为 preView.md
+     */
     fileName?: string
 }
 
