@@ -9,10 +9,12 @@ import { terser } from 'rollup-plugin-terser'
 
 import eslint from '@rollup/plugin-eslint'
 
+import dts from 'rollup-plugin-dts'
+
 export default [
     {
         input: 'src/index.ts',
-        external: ['react'],
+        external: ['axios', 'cheerio', 'fs-extra', 'turndown', 'turndown-plugin-gfm'],
         plugins: [
             resolve(),
             eslint({
@@ -28,12 +30,21 @@ export default [
                 format: 'umd',
                 name: 'Index',
                 plugins: [terser()],
-                banner: '/** Hello this is my utils */',
             },
             {
                 file: 'dist/index.es.js',
                 format: 'es',
-                // plugins: [terser()],
+                plugins: [terser()],
+            },
+        ],
+    },
+    {
+        input: 'src/index.ts',
+        plugins: [typescript(), dts()],
+        output: [
+            {
+                file: 'dist/index.d.ts',
+                format: 'es',
             },
         ],
     },
