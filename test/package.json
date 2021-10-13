@@ -1,0 +1,13 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@ryan-liu/wechat-to-markdown-test": "1.0.0"
+  },
+  "scripts": {
+    "dev": "node ./index.js"
+  }
+}
