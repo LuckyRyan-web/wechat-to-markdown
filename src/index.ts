@@ -15,7 +15,10 @@ interface File {
     fileName?: string
 }
 
-export async function transformHtml2Markdown(url: string, file: File = { getFile: false, fileName: 'preView.md' }) {
+export default async function transformHtml2Markdown(
+    url: string,
+    file: File = { getFile: false, fileName: 'preView.md' }
+) {
     let md_code = ''
 
     const turndownService = new turnDownService({ codeBlockStyle: 'fenced' })
@@ -32,7 +35,7 @@ export async function transformHtml2Markdown(url: string, file: File = { getFile
             const isCode = content[0] === '`' && content[len - 1] === '`'
             const result = isCode ? content.substr(1, len - 2) : content
             return '```\n' + result + '\n```\n'
-        },
+        }
     })
 
     await axios
