@@ -15,10 +15,7 @@ export interface File {
     fileName?: string
 }
 
-export default async function transformHtml2Markdown(
-    url: string,
-    file: File = { getFile: false, fileName: 'preView.md' }
-) {
+export async function transformHtml2Markdown(url: string, file: File = { getFile: false, fileName: 'preView.md' }) {
     let md_code = ''
 
     const turndownService = new turnDownService({ codeBlockStyle: 'fenced' })
