@@ -3,12 +3,13 @@
   "version": "1.0.4",
   "description": "测试发布微信公众号文章转化为 markdown",
   "author": "Ryan-liu",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@ryan-liu/eslint-config-jsx-config": "^1.0.2",
