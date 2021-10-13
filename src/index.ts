@@ -58,7 +58,7 @@ export async function transformHtml2Markdown(url: string, file: File = { getFile
     return md_code
 }
 
-setTimeout(async () => {
-    const res = await transformHtml2Markdown('https://mp.weixin.qq.com/s/lVd-kXDUH7kSwkYQEvQO4Q')
-    console.log(res)
-}, 0)
+// setTimeout(async () => {
+//     const res = await transformHtml2Markdown('https://mp.weixin.qq.com/s/lVd-kXDUH7kSwkYQEvQO4Q')
+//     console.log(res)
+// }, 0)
