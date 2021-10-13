@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-interface File {
+export interface File {
     /**
      * 是否需要生成预览 md 文件
      */
