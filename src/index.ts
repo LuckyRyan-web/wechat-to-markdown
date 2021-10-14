@@ -1,23 +1,9 @@
 import turnDownService from 'turndown'
 import { gfm } from 'turndown-plugin-gfm'
-import fs from 'fs-extra'
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-export interface File {
-    /**
-     * 是否需要生成预览 md 文件
-     */
-    getFile: boolean
-    /**
-     * 预览 md 文件的命名，默认为 preView.md
-     */
-    fileName?: string
-}
-
-export async function transformHtml2Markdown(url: string, file: File = { getFile: false, fileName: 'preView.md' }) {
-    let md_code = ''
-
+export async function transformHtml2Markdown(url: string) {
     const turndownService = new turnDownService({ codeBlockStyle: 'fenced' })
 
     // Use the gfm plugin
@@ -32,10 +18,10 @@ export async function transformHtml2Markdown(url: string, file: File = { getFile
             const isCode = content[0] === '`' && content[len - 1] === '`'
             const result = isCode ? content.substr(1, len - 2) : content
             return '```\n' + result + '\n```\n'
-        }
+        },
     })
 
-    await axios
+    return axios
         .get(url)
         .then((res) => {
             const $ = cheerio.load(res['data'])
@@ -45,20 +31,12 @@ export async function transformHtml2Markdown(url: string, file: File = { getFile
             if (html && html.length > 0) {
                 const mds = turndownService.turndown(html)
 
-                md_code = mds
-                if (file.getFile) {
-                    fs.outputFileSync(file?.fileName || 'preView.md', mds)
-                }
+                return mds
             }
+
+            return '暂时无法解析这个地址'
         })
         .catch((err) => {
-            console.log(err)
+            return err
         })
-
-    return md_code
 }
-
-// setTimeout(async () => {
-//     const res = await transformHtml2Markdown('https://mp.weixin.qq.com/s/lVd-kXDUH7kSwkYQEvQO4Q')
-//     console.log(res)
-// }, 0)
