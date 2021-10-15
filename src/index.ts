@@ -34,7 +34,7 @@ export async function transformHtml2Markdown(url: string) {
                 return mds
             }
 
-            return '暂时无法解析这个地址'
+            return 'resolved fail!'
         })
         .catch((err) => {
             return err

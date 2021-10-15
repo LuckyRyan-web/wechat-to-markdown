@@ -1,7 +1,7 @@
 {
-  "name": "@ryan-liu/wechat-to-markdown-test",
-  "version": "1.0.5",
-  "description": "测试发布微信公众号文章转化为 markdown",
+  "name": "@ryan-liu/html-to-markdown",
+  "version": "1.0.0",
+  "description": "解析文章 URL 为 markdown",
   "author": "Ryan-liu",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
