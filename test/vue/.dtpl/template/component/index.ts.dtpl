@@ -1,0 +1,2 @@
+import ${ref.fileName} from './${ref.fileName}'
+export default ${ref.fileName}

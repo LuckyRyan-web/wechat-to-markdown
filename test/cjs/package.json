@@ -1,0 +1,12 @@
+{
+  "name": "cjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@ryan-liu/html-to-markdown": "^1.0.0"
+  },
+  "scripts": {
+    "dev": "node index.js"
+  }
+}

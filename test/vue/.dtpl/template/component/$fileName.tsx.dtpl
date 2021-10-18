@@ -1,0 +1,18 @@
+/**
+ *
+ * @author $user
+ * @date $datetime
+ * @since ${pkg.version}
+ */
+import { defineComponent } from 'vue'
+// import classnames from 'classnames'
+// import style from './style.module.scss'
+
+export default defineComponent({
+    setup() {
+        return {}
+    },
+    render() {
+        return <div>$fileName</div>
+    },
+})

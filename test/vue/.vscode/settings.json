@@ -1,0 +1,40 @@
+{
+    "editor.formatOnSave": false,
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true
+    },
+    "stylelint.enable": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[json]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vetur.validation.template": false,
+    "vetur.validation.style": false,
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.css": "none",
+    "vetur.format.defaultFormatter.sass": "none",
+    "vetur.format.defaultFormatter.postcss": "none",
+    "vetur.experimental.templateInterpolationService": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+        // "**/node_modules": true
+    }
+}
