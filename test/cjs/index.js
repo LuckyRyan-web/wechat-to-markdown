@@ -6,7 +6,7 @@ const fs = require('fs-extra')
 const dayjs = require('dayjs')
 
 setTimeout(async () => {
-    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/e07fSNafNMr7PF71rCejEA')
+    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/ItaKztMTzrotabFJjunVLQ')
 
     const today = dayjs().format('YYYY-MM-DD')
 

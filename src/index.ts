@@ -4,7 +4,11 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 
 export async function transformHtml2Markdown(url: string) {
-    const turndownService = new turnDownService({ codeBlockStyle: 'fenced' })
+    const turndownService = new turnDownService({
+        codeBlockStyle: 'fenced',
+        hr: '',
+        br: '\n',
+    })
 
     // Use the gfm plugin
     turndownService.use(gfm)
@@ -16,9 +20,19 @@ export async function transformHtml2Markdown(url: string) {
             const len = content.length
             // 除了pre标签，里面是否还有 code 标签包裹，有的话去掉首尾的`（针对微信文章）
             const isCode = content[0] === '`' && content[len - 1] === '`'
+
             const result = isCode ? content.substr(1, len - 2) : content
+
             return '```\n' + result + '\n```\n'
         }
+    }).addRule('getImage', {
+        filter: ['img'],
+        replacement(content, node: any) {
+            const src = node.getAttribute('data-src') || '';
+
+            // const alt = node.alt || node.title || src;
+            return src ? `\n\n ![](${src}) \n\n` : '';
+        },
     })
 
     return axios
