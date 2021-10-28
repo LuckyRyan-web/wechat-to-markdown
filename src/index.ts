@@ -18,7 +18,7 @@ export async function transformHtml2Markdown(url: string) {
             const isCode = content[0] === '`' && content[len - 1] === '`'
             const result = isCode ? content.substr(1, len - 2) : content
             return '```\n' + result + '\n```\n'
-        },
+        }
     })
 
     return axios
@@ -26,12 +26,24 @@ export async function transformHtml2Markdown(url: string) {
         .then((res) => {
             const $ = cheerio.load(res['data'])
 
+            let title = $('#activity-name').text()
+
+            title = title.trim() || ''
+
+            const author = $('.original_primary_nickname').text()
+
             const html = $('#js_content').html()
 
             if (html && html.length > 0) {
-                const mds = turndownService.turndown(html)
+                let res = turndownService.turndown(html)
 
-                return mds
+                res = `## ${title} \n \n` + `## 作者 ${author} \n \n` + res
+
+                return {
+                    title,
+                    author,
+                    content: res
+                }
             }
 
             return 'resolved fail!'

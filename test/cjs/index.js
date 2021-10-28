@@ -1,7 +1,31 @@
-// import { transformHtml2Markdown } from '@ryan-liu/html-to-markdown'
-const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
+// const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
+const { transformHtml2Markdown } = require('../../dist/index.cjs')
+
+const fs = require('fs-extra')
+
+const dayjs = require('dayjs')
 
 setTimeout(async () => {
-    const res = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
-    console.log(res)
+    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/e07fSNafNMr7PF71rCejEA')
+
+    const today = dayjs().format('YYYY-MM-DD')
+
+    const file = `./content/${today}_${author}.md`
+
+    fs.pathExists(file, (err, exists) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+
+        if (!exists){
+            fs.writeFileSync(file, content, function (err) {
+                console.error(err)
+            })
+        } else {
+            console.log('file exists')
+            // fs.remove(file)
+        }
+    })
+
 }, 0)
