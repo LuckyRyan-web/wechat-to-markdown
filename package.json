@@ -15,8 +15,10 @@
     "@ryan-liu/eslint-config-jsx-config": "^1.0.2",
     "@types/fs-extra": "^9.0.13",
     "@types/turndown": "^5.0.1",
+    "cross-spawn": "^7.0.3",
     "eslint": "^7.32.0",
     "husky": "^7.0.2",
+    "inquirer": "^8.2.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
     "tsup": "^5.4.0",
@@ -25,7 +27,8 @@
   "scripts": {
     "dev": "yarn build --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "pub": "node tools/publish.js"
   },
   "husky": {
     "hooks": {
