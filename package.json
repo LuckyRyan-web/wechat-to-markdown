@@ -1,6 +1,6 @@
 {
   "name": "@ryan-liu/html-to-markdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "解析文章 URL 为 markdown",
   "author": "Ryan-liu",
   "main": "dist/index.cjs",
