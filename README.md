@@ -4,6 +4,14 @@ wechat url to markdown
 
 输入微信公众号地址可以转化为 markdown 格式
 
+## 返回格式
+
+|  返回属性   | 说明  | 类型  |
+|  ----  | ----  | ----  |
+| title  | 标题 | string |
+| author  | 作者 | string  |
+| content  | markdown 内容 | string  |
+
 ## Basic Usage
 
 ## CommonJs
@@ -12,8 +20,10 @@ wechat url to markdown
 const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
 
 setTimeout(async () => {
-    const res = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
-    console.log(res)
+    const { title, author, content } = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
+    console.log('标题', title)
+    console.log('作者', author)
+    console.log('内容', content)
 }, 0)
 ```
 
@@ -24,10 +34,12 @@ import { transformHtml2Markdown } from '@ryan-liu/html-to-markdown'
 
 setup() {
     const getData = async () => {
-        const res = await transformHtml2Markdown(
+        const { title, author, content } = await transformHtml2Markdown(
             '/api/s/9d5DWg7YdMHPvVl-2KLH2w'
         )
-        console.log(res)
+        console.log('标题', title)
+        console.log('作者', author)
+        console.log('内容', content)
     }
 
     getData()
@@ -38,7 +50,7 @@ setup() {
 
 **vite.config.ts**
 
-```
+```js
 ...
 server: {
     proxy: {
