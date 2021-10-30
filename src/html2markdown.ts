@@ -7,10 +7,25 @@
 import cheerio from 'cheerio'
 
 export default function html2markdown(htmlStr: string) {
-
-    let code = htmlStr.replace(/&nbsp;/gi, ' ')
+    let code = htmlStr
 
     code = code.replace(/<br>/gi, '\n')
+
+    code = code.replace(/&nbsp;/gi, ' ')
+
+    code = code.replace(/&lt;/gi, '<')
+
+    code = code.replace(/&gt;/gi, '>')
+
+    code = code.replace(/&amp;/gi, '&')
+
+    code = code.replace(/&quot;/gi, '"')
+
+    code = code.replace(/&apos;/gi, '‘')
+
+    code = code.replace(/&times;/gi, '*')
+
+    code = code.replace(/&divide;/gi, '%')
 
     const $ = cheerio.load(code)
 
