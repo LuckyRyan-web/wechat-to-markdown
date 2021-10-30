@@ -1,7 +1,7 @@
 {
-  "name": "@ryan-liu/html-to-markdown",
-  "version": "1.1.1",
-  "description": "解析文章 URL 为 markdown",
+  "name": "@ryan-liu/wechatUrl-to-markdown",
+  "version": "1.0.0",
+  "description": "解析微信文章 URL 为 markdown",
   "author": "Ryan-liu",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
