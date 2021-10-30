@@ -1,5 +1,5 @@
 {
-  "name": "@ryan-liu/wechatUrl-to-markdown",
+  "name": "@ryan-liu/wechat-to-markdown",
   "version": "1.0.0",
   "description": "解析微信文章 URL 为 markdown",
   "author": "Ryan-liu",
