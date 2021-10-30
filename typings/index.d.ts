@@ -5,3 +5,7 @@ declare module 'turndown-plugin-gfm' {
     export const tables: Plugin
     export const strikethrough: Plugin
 }
+
+declare module 'html2markdown' {
+    export default function html2md(string): string
+}

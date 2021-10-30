@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@ryan-liu/html-to-markdown": "^1.0.0",
+    "@ryan-liu/html-to-markdown": "^1.0.3",
     "fs-extra": "^10.0.0"
   },
   "scripts": {

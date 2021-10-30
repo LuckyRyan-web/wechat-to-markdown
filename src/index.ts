@@ -2,12 +2,12 @@ import turnDownService from 'turndown'
 import { gfm } from 'turndown-plugin-gfm'
 import axios from 'axios'
 import cheerio from 'cheerio'
+import html2markdown from 'html2markdown'
 
 export async function transformHtml2Markdown(url: string) {
     const turndownService = new turnDownService({
         codeBlockStyle: 'fenced',
         hr: '',
-        br: '\n',
     })
 
     // Use the gfm plugin
@@ -16,14 +16,27 @@ export async function transformHtml2Markdown(url: string) {
     // 自定义配置
     turndownService.addRule('pre2Code', {
         filter: ['pre'],
-        replacement(content) {
+        replacement(content, node: any) {
             const len = content.length
-            // 除了pre标签，里面是否还有 code 标签包裹，有的话去掉首尾的`（针对微信文章）
+            // 微信文章获取到的 content， 会出现首尾都有 '`' 
             const isCode = content[0] === '`' && content[len - 1] === '`'
 
-            const result = isCode ? content.substr(1, len - 2) : content
+            let pre_Markdown = ''
 
-            return '```\n' + result + '\n```\n'
+            /**
+             * 微信不同代码风格
+             * 1. <code><span>code</span></code> 
+             * 2. <code><span><span>123</span><br></span></code>
+             * turndown 不解析 code 下的 br 标签，对于 code 标签使用 html2markdown 解析 node 节点下的 html 代码会更好
+             */
+            if (isCode) {
+                pre_Markdown = html2markdown(node.innerHTML).replace(/&nbsp;/gi, ' ')
+            }
+
+            const res = isCode ? pre_Markdown : content
+
+
+            return '```\n' + res + '\n```\n'
         }
     }).addRule('getImage', {
         filter: ['img'],
@@ -33,12 +46,30 @@ export async function transformHtml2Markdown(url: string) {
             // const alt = node.alt || node.title || src;
             return src ? `\n\n ![](${src}) \n\n` : '';
         },
+    }).addRule('lineBreaks', {
+        filter: 'br',
+        replacement: () => '\n',
     })
+    // .addRule('renderCodeBr', {
+    //     filter(node) {
+    //         return Boolean(
+    //             node.nodeName.toLocaleLowerCase() === 'pre' &&
+    //             node.getElementsByTagName('code') &&
+    //             node.getElementsByTagName('code').length
+    //         )
+    //     },
+    //     replacement(content, node: any) {
+    //         // console.log(node.innerHTML)
+    //         return content
+    //     }
+    // })
 
     return axios
         .get(url)
         .then((res) => {
             const $ = cheerio.load(res['data'])
+
+            // 针对微信文章的主题，code span 下的 <br> 标签不会进行换行渲染
 
             let title = $('#activity-name').text()
 

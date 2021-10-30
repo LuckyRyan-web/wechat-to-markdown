@@ -6,7 +6,8 @@ const fs = require('fs-extra')
 const dayjs = require('dayjs')
 
 setTimeout(async () => {
-    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/ItaKztMTzrotabFJjunVLQ')
+    // 'https://mp.weixin.qq.com/s/ItaKztMTzrotabFJjunVLQ'
+    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/_j45Zd-d_2vYyo5vTTDpGg')
 
     const today = dayjs().format('YYYY-MM-DD')
 
@@ -24,7 +25,6 @@ setTimeout(async () => {
             })
         } else {
             console.log('file exists')
-            // fs.remove(file)
         }
     })
 

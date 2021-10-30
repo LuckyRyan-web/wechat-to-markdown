@@ -1055,6 +1055,11 @@ has-flag@^4.0.0:
   resolved "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
+html2markdown@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/html2markdown/-/html2markdown-1.1.0.tgz#7b39915f71ff0a7ec676b7e773f2a50a7d950d3c"
+  integrity sha1-ezmRX3H/Cn7Gdrfnc/KlCn2VDTw=
+
 htmlparser2@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/htmlparser2/-/htmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"
