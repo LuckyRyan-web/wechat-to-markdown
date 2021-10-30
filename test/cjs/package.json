@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@ryan-liu/html-to-markdown": "^1.0.3",
+    "@ryan-liu/wechat-to-markdown": "^1.1.0",
     "fs-extra": "^10.0.0"
   },
   "scripts": {

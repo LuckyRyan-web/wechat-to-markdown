@@ -1,4 +1,4 @@
-// const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
+// const { transformHtml2Markdown } = require('@ryan-liu/wechat-to-markdown')
 const { transformHtml2Markdown } = require('../../dist/index.cjs')
 
 const fs = require('fs-extra')

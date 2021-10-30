@@ -43,10 +43,17 @@
       "prettier --write"
     ]
   },
+  "tsup": {
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "external": [
+      "html2markdown"
+    ]
+  },
   "dependencies": {
     "axios": "^0.22.0",
     "cheerio": "^1.0.0-rc.10",
-    "html2markdown": "^1.1.0",
     "turndown": "^7.1.1",
     "turndown-plugin-gfm": "^1.0.2"
   }

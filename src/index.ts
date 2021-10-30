@@ -2,7 +2,7 @@ import turnDownService from 'turndown'
 import { gfm } from 'turndown-plugin-gfm'
 import axios from 'axios'
 import cheerio from 'cheerio'
-import html2markdown from 'html2markdown'
+import formatMD from './html2markdown'
 
 export async function transformHtml2Markdown(url: string) {
     const turndownService = new turnDownService({
@@ -23,18 +23,11 @@ export async function transformHtml2Markdown(url: string) {
 
             let pre_Markdown = ''
 
-            /**
-             * 微信不同代码风格
-             * 1. <code><span>code</span></code> 
-             * 2. <code><span><span>123</span><br></span></code>
-             * turndown 不解析 code 下的 br 标签，对于 code 标签使用 html2markdown 解析 node 节点下的 html 代码会更好
-             */
             if (isCode) {
-                pre_Markdown = html2markdown(node.innerHTML).replace(/&nbsp;/gi, ' ')
+                pre_Markdown = formatMD(node.innerHTML)
             }
 
             const res = isCode ? pre_Markdown : content
-
 
             return '```\n' + res + '\n```\n'
         }
@@ -43,7 +36,6 @@ export async function transformHtml2Markdown(url: string) {
         replacement(content, node: any) {
             const src = node.getAttribute('data-src') || '';
 
-            // const alt = node.alt || node.title || src;
             return src ? `\n\n ![](${src}) \n\n` : '';
         },
     }).addRule('lineBreaks', {
@@ -68,8 +60,6 @@ export async function transformHtml2Markdown(url: string) {
         .get(url)
         .then((res) => {
             const $ = cheerio.load(res['data'])
-
-            // 针对微信文章的主题，code span 下的 <br> 标签不会进行换行渲染
 
             let title = $('#activity-name').text()
 

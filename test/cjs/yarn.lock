@@ -2,14 +2,24 @@
 # yarn lockfile v1
 
 
-"@ryan-liu/html-to-markdown@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@ryan-liu/html-to-markdown/-/html-to-markdown-1.0.0.tgz#9001a7d75d58c357f418c8789dc300d4442060f1"
-  integrity sha512-ucyhCqE/L6i3il426veu1MLCWz7PZKM+oWbm1H20QVAPMOKImtK/UxbFrcOsRgP4gYIUvht2DG97o3h2tjFdMA==
+"@ryan-liu/html-to-markdown@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@ryan-liu/html-to-markdown/-/html-to-markdown-1.0.3.tgz#ccc90e256b42271953516c3c22f9a491f5780720"
+  integrity sha512-9LPKg+Zm+vjXiOmkDo/pHRvasp4t2Y/2/KjmElOcft2UskZ1fKy4DfVYCyd9RTv4FCcjTa5rGvCL5+vI9aVQDA==
   dependencies:
     axios "^0.22.0"
     cheerio "^1.0.0-rc.10"
-    fs-extra "^10.0.0"
+    turndown "^7.1.1"
+    turndown-plugin-gfm "^1.0.2"
+
+"@ryan-liu/wechat-to-markdown@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@ryan-liu/wechat-to-markdown/-/wechat-to-markdown-1.1.0.tgz#8cce01d59aac7c55472904006b9e0c03fe9a028d"
+  integrity sha512-CcyRp2FZboCthkmDL2B1DuhqTR7G38JDgApFF4oazI6h2w4ohmxKEjkaEIlvpbRC+eaTUu+mjkcf9jaX11MgdQ==
+  dependencies:
+    axios "^0.22.0"
+    cheerio "^1.0.0-rc.10"
+    html2markdown "^1.1.0"
     turndown "^7.1.1"
     turndown-plugin-gfm "^1.0.2"
 
@@ -128,6 +138,11 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.8"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
+
+html2markdown@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/html2markdown/-/html2markdown-1.1.0.tgz#7b39915f71ff0a7ec676b7e773f2a50a7d950d3c"
+  integrity sha1-ezmRX3H/Cn7Gdrfnc/KlCn2VDTw=
 
 htmlparser2@^6.1.0:
   version "6.1.0"
