@@ -75,8 +75,6 @@ server: {
 
 [turndown-plugin-gfm (turndown 解析部分 html 元素插件)](https://github.com/mixmark-io/turndown-plugin-gfm)
 
-[html-to-markdown(html to markdown 插件)](https://github.com/kates/html2markdown)
-
 ## Reference
 
 [html2md (一个非常完善的 url to markdown 项目)](https://github.com/helloworld-Co/html2md)
