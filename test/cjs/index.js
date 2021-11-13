@@ -7,25 +7,14 @@ const dayjs = require('dayjs')
 
 setTimeout(async () => {
     // 'https://mp.weixin.qq.com/s/ItaKztMTzrotabFJjunVLQ'
-    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/_j45Zd-d_2vYyo5vTTDpGg')
+    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/BuM5DDbT6rDgdo1pPIj0lA')
 
     const today = dayjs().format('YYYY-MM-DD')
 
     const file = `./content/${today}_${author}.md`
 
-    fs.pathExists(file, (err, exists) => {
-        if (err) {
-            console.log(err)
-            return
-        }
-
-        if (!exists){
-            fs.writeFileSync(file, content, function (err) {
-                console.error(err)
-            })
-        } else {
-            console.log('file exists')
-        }
+    fs.writeFileSync(file, content, function (err) {
+        console.error(err)
     })
 
 }, 0)

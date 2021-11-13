@@ -2,7 +2,7 @@ import turnDownService from 'turndown'
 import { gfm } from 'turndown-plugin-gfm'
 import axios from 'axios'
 import cheerio from 'cheerio'
-import formatMD from './html2markdown'
+import { code2markdown, figure2markdown } from './code2markdown'
 
 export async function transformHtml2Markdown(url: string) {
     const turndownService = new turnDownService({
@@ -10,7 +10,6 @@ export async function transformHtml2Markdown(url: string) {
         hr: '',
     })
 
-    // Use the gfm plugin
     turndownService.use(gfm)
 
     // 自定义配置
@@ -24,7 +23,7 @@ export async function transformHtml2Markdown(url: string) {
             let pre_Markdown = ''
 
             if (isCode) {
-                pre_Markdown = formatMD(node.innerHTML)
+                pre_Markdown = code2markdown(node.innerHTML)
             }
 
             const res = isCode ? pre_Markdown : content
@@ -34,27 +33,20 @@ export async function transformHtml2Markdown(url: string) {
     }).addRule('getImage', {
         filter: ['img'],
         replacement(content, node: any) {
-            const src = node.getAttribute('data-src') || '';
+            const src = node.getAttribute('data-src') || ''
 
-            return src ? `\n\n ![](${src}) \n\n` : '';
+            return src ? `\n\n ![](${src}) \n\n` : ''
         },
     }).addRule('lineBreaks', {
         filter: 'br',
         replacement: () => '\n',
+    }).addRule('img2Code', {
+        filter: ['figure'],
+        replacement(content, node: any) {
+            const res = figure2markdown(node.innerHTML)
+            return res || ''
+        }
     })
-    // .addRule('renderCodeBr', {
-    //     filter(node) {
-    //         return Boolean(
-    //             node.nodeName.toLocaleLowerCase() === 'pre' &&
-    //             node.getElementsByTagName('code') &&
-    //             node.getElementsByTagName('code').length
-    //         )
-    //     },
-    //     replacement(content, node: any) {
-    //         // console.log(node.innerHTML)
-    //         return content
-    //     }
-    // })
 
     return axios
         .get(url)
