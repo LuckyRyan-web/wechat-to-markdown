@@ -1,18 +1,18 @@
-## description
+## 说明
 
-Enter the WeChat public address to convert it to markdown format
+输入微信公众号地址，将其转换为 markdown 格式
 
-English | [简体中文](README.zh-CN.md)
+[English](README.md) | 简体中文
 
-## return options
+## 返回属性
 
 |  Properties   | Description  | Types  |
 |  ----  | ----  | ----  |
-| title  | title | string |
-| author  | author | string  |
-| content  | markdown content | string  |
+| title  | 标题 | string |
+| author  | 作者 | string  |
+| content  | markdown 内容 | string  |
 
-## Basic Usage
+## 基本用法
 
 ## CommonJs
 
@@ -21,9 +21,9 @@ const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
 
 setTimeout(async () => {
     const { title, author, content } = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
-    console.log('title', title)
-    console.log('author', author)
-    console.log('content', content)
+    console.log('标题', title)
+    console.log('作者', author)
+    console.log('内容', content)
 }, 0)
 ```
 
@@ -37,9 +37,9 @@ setup() {
         const { title, author, content } = await transformHtml2Markdown(
             '/api/s/9d5DWg7YdMHPvVl-2KLH2w'
         )
-        console.log('title', title)
-        console.log('author', author)
-        console.log('content', content)
+        console.log('标题', title)
+        console.log('作者', author)
+        console.log('内容', content)
     }
 
     getData()
@@ -65,16 +65,16 @@ server: {
 ```
 
 
-## Packages
+## 使用到的包
 
-[axios](http://www.axios-js.com/)
+[axios (著名的请求库)](http://www.axios-js.com/)
 
-[cheerio](https://github.com/cheeriojs/cheerio)
+[cheerio (可以用 JQuery 方式操作 html 源码)](https://github.com/cheeriojs/cheerio)
 
 [turndown (html to markdown)](https://github.com/mixmark-io/turndown)
 
-[turndown-plugin-gfm (turndown parsing partial html element plugin)](https://github.com/mixmark-io/turndown-plugin-gfm)
+[turndown-plugin-gfm (turndown 解析部分 html 元素插件)](https://github.com/mixmark-io/turndown-plugin-gfm)
 
-## Reference
+## 参考
 
-[html2md (A very well developed url to markdown project)](https://github.com/helloworld-Co/html2md)
+[html2md (一个非常完善的 url to markdown 项目)](https://github.com/helloworld-Co/html2md)
