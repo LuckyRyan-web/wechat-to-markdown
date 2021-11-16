@@ -4,7 +4,7 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 import { code2markdown, figure2markdown } from './code2markdown'
 
-export async function transformHtml2Markdown(url: string) {
+export async function transformHtml2Markdown(url: string): Promise<{title: string, author: string, content: string}> {
     const turndownService = new turnDownService({
         codeBlockStyle: 'fenced',
         hr: '',
