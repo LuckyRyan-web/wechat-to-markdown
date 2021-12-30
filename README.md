@@ -17,7 +17,7 @@ English | [简体中文](README.zh-CN.md)
 ## CommonJs
 
 ```javascript
-const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
+const { transformHtml2Markdown } = require('@ryan-liu/wechat-to-markdown')
 
 setTimeout(async () => {
     const { title, author, content } = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
@@ -30,7 +30,7 @@ setTimeout(async () => {
 ## vue3
 **index.ts**
 ```javascript
-import { transformHtml2Markdown } from '@ryan-liu/html-to-markdown'
+import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
 
 setup() {
     const getData = async () => {
