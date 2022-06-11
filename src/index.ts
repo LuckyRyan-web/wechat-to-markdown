@@ -12,7 +12,9 @@ const getError = (code: number) => {
     }
 }
 
-export async function transformHtml2Markdown(
+export { TurnDownResult, Status }
+
+export default async function transformHtml2Markdown(
     url: string
 ): Promise<TurnDownResult> {
     let json: TurnDownResult = await axios
