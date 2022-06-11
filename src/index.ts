@@ -1,55 +1,29 @@
-import turnDownService from 'turndown'
-import { gfm } from 'turndown-plugin-gfm'
 import axios from 'axios'
 import cheerio from 'cheerio'
-import { code2markdown, figure2markdown } from './code2markdown'
+import { errObj } from './error'
+import { TurnDownResult, Status } from './type'
+import { turndownService } from './turndownCode'
 
-export async function transformHtml2Markdown(url: string): Promise<{title: string, author: string, content: string}> {
-    const turndownService = new turnDownService({
-        codeBlockStyle: 'fenced',
-        hr: '',
-    })
+const getError = (code: number) => {
+    return {
+        code,
+        success: false,
+        msg: errObj[code],
+    }
+}
 
-    turndownService.use(gfm)
-
-    // 自定义配置
-    turndownService.addRule('pre2Code', {
-        filter: ['pre'],
-        replacement(content, node: any) {
-            const len = content.length
-            // 微信文章获取到的 content， 会出现首尾都有 '`' 
-            const isCode = content[0] === '`' && content[len - 1] === '`'
-
-            let pre_Markdown = ''
-
-            if (isCode) {
-                pre_Markdown = code2markdown(node.innerHTML)
-            }
-
-            const res = isCode ? pre_Markdown : content
-
-            return '```\n' + res + '\n```\n'
-        }
-    }).addRule('getImage', {
-        filter: ['img'],
-        replacement(content, node: any) {
-            const src = node.getAttribute('data-src') || ''
-
-            return src ? `\n\n ![](${src}) \n\n` : ''
-        },
-    }).addRule('lineBreaks', {
-        filter: 'br',
-        replacement: () => '\n',
-    }).addRule('img2Code', {
-        filter: ['figure'],
-        replacement(content, node: any) {
-            const res = figure2markdown(node.innerHTML)
-            return res || ''
-        }
-    })
-
-    return axios
-        .get(url)
+export async function transformHtml2Markdown(
+    url: string
+): Promise<TurnDownResult> {
+    let json: TurnDownResult = await axios
+        .request({
+            url,
+            method: 'get',
+            timeout: 30000,
+            transformResponse(res) {
+                return res
+            },
+        })
         .then((res) => {
             const $ = cheerio.load(res['data'])
 
@@ -67,15 +41,22 @@ export async function transformHtml2Markdown(url: string): Promise<{title: strin
                 res = `## ${title} \n \n` + `## 作者 ${author} \n \n` + res
 
                 return {
-                    title,
-                    author,
-                    content: res
+                    success: true,
+                    code: Status.Success,
+                    data: {
+                        title,
+                        author,
+                        content: res,
+                    },
                 }
             }
 
-            return 'resolved fail!'
+            return getError(Status.Fail)
         })
         .catch((err) => {
+            console.log(err)
             return err
         })
+
+    return json
 }
