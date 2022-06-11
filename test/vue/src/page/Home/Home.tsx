@@ -7,8 +7,9 @@
 import { defineComponent } from 'vue'
 // import classnames from 'classnames'
 // import style from './style.module.scss'
-// import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
-import { transformHtml2Markdown } from '../../../../../dist/index'
+import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
+// import { TurnDownResult } from '@ryan-liu/wechat-to-markdown'
+// import { transformHtml2Markdown } from '../../../../../dist/index'
 
 export default defineComponent({
     setup() {

@@ -1,5 +1,5 @@
 // const { transformHtml2Markdown } = require('@ryan-liu/wechat-to-markdown')
-const { transformHtml2Markdown } = require('../../dist/index.cjs')
+const transformHtml2Markdown = require('../../dist/index.cjs').default
 
 const fs = require('fs-extra')
 

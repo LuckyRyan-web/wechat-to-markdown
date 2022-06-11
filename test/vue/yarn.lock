@@ -350,14 +350,13 @@
     eslint-plugin-prettier "^4.0.0"
     typescript "^4.4.2"
 
-"@ryan-liu/wechat-to-markdown@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@ryan-liu/wechat-to-markdown/-/wechat-to-markdown-1.1.0.tgz#8cce01d59aac7c55472904006b9e0c03fe9a028d"
-  integrity sha512-CcyRp2FZboCthkmDL2B1DuhqTR7G38JDgApFF4oazI6h2w4ohmxKEjkaEIlvpbRC+eaTUu+mjkcf9jaX11MgdQ==
+"@ryan-liu/wechat-to-markdown@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@ryan-liu/wechat-to-markdown/-/wechat-to-markdown-1.2.0.tgz#5a73c1092c2c51211ae242b0dc109ccd19b5ee6d"
+  integrity sha512-8NOKrxg4DEhcNQ2M3rt0X8h7zGkGX+I1ZVTjodvXJbmVOmL/NPjyFXrg12M3WDuL/pMq6bJVxabnJZ7G3/b3/Q==
   dependencies:
     axios "^0.22.0"
     cheerio "^1.0.0-rc.10"
-    html2markdown "^1.1.0"
     turndown "^7.1.1"
     turndown-plugin-gfm "^1.0.2"
 
@@ -1754,11 +1753,6 @@ html-tags@^3.1.0:
   version "3.1.0"
   resolved "https://npm.yzops.net/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha1-e15vfmZen7QfMAB+2eDUHpf7IUA=
-
-html2markdown@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/html2markdown/-/html2markdown-1.1.0.tgz#7b39915f71ff0a7ec676b7e773f2a50a7d950d3c"
-  integrity sha1-ezmRX3H/Cn7Gdrfnc/KlCn2VDTw=
 
 htmlparser2@^3.10.0:
   version "3.10.1"

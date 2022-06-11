@@ -25,7 +25,7 @@ interface TurnDownResult {
 ## CommonJs
 
 ```javascript
-const { transformHtml2Markdown } = require('@ryan-liu/wechat-to-markdown')
+const transformHtml2Markdown = require('@ryan-liu/wechat-to-markdown').default
 
 setTimeout(async () => {
     const articleData = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
@@ -41,7 +41,7 @@ setTimeout(async () => {
 ## vue3
 **index.ts**
 ```javascript
-import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
+import transformHtml2Markdown from '@ryan-liu/wechat-to-markdown'
 
 setup() {
     const getData = async () => {
