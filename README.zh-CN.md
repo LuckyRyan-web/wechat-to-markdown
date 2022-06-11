@@ -6,40 +6,54 @@
 
 ## 返回属性
 
-|  Properties   | Description  | Types  |
-|  ----  | ----  | ----  |
-| title  | 标题 | string |
-| author  | 作者 | string  |
-| content  | markdown 内容 | string  |
+```ts
+interface TurnDownResult {
+    success: boolean
+    code: number
+    data?: {
+        title?: string
+        author?: string
+        content?: string
+    }
+    msg?: string
+}
 
+```
 ## 基本用法
 
 ## CommonJs
 
 ```javascript
-const { transformHtml2Markdown } = require('@ryan-liu/html-to-markdown')
+const transformHtml2Markdown = require('@ryan-liu/wechat-to-markdown').default
 
 setTimeout(async () => {
-    const { title, author, content } = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
-    console.log('标题', title)
-    console.log('作者', author)
-    console.log('内容', content)
+    const articleData = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
+
+    const { title, author, content } = articleData.data
+
+    console.log('title', title)
+    console.log('author', author)
+    console.log('content', content)
 }, 0)
 ```
 
 ## vue3
 **index.ts**
+
 ```javascript
-import { transformHtml2Markdown } from '@ryan-liu/html-to-markdown'
+import transformHtml2Markdown from '@ryan-liu/wechat-to-markdown'
 
 setup() {
     const getData = async () => {
-        const { title, author, content } = await transformHtml2Markdown(
+        const articleData = await transformHtml2Markdown(
             '/api/s/9d5DWg7YdMHPvVl-2KLH2w'
         )
-        console.log('标题', title)
-        console.log('作者', author)
-        console.log('内容', content)
+
+        const { title, author, content } = articleData.data
+
+        console.log('title', title)
+        console.log('author', author)
+        console.log('content', content)
     }
 
     getData()
