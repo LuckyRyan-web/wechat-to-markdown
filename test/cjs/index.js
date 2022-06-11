@@ -7,7 +7,12 @@ const dayjs = require('dayjs')
 
 setTimeout(async () => {
     // 'https://mp.weixin.qq.com/s/ItaKztMTzrotabFJjunVLQ'
-    const {title, author, content} = await transformHtml2Markdown('https://mp.weixin.qq.com/s/BuM5DDbT6rDgdo1pPIj0lA')
+    const url = 'https://mp.weixin.qq.com/s/eTtQez2vnOwo3UZzNz9_Ow'
+    const article = await transformHtml2Markdown(url)
+
+    const { title, author, content } = article.data
+
+    console.log('data', article.data)
 
     const today = dayjs().format('YYYY-MM-DD')
 
@@ -16,5 +21,4 @@ setTimeout(async () => {
     fs.writeFileSync(file, content, function (err) {
         console.error(err)
     })
-
 }, 0)

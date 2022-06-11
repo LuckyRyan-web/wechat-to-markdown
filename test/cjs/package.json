@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@ryan-liu/html-to-markdown": "^1.0.3",
     "@ryan-liu/wechat-to-markdown": "^1.1.0",
     "fs-extra": "^10.0.0"
   },
@@ -12,6 +11,7 @@
     "dev": "node index.js"
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.10.7",
+    "we-extract": "^2.2.14"
   }
 }
