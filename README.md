@@ -6,11 +6,19 @@ English | [简体中文](README.zh-CN.md)
 
 ## return options
 
-|  Properties   | Description  | Types  |
-|  ----  | ----  | ----  |
-| title  | title | string |
-| author  | author | string  |
-| content  | markdown content | string  |
+```ts
+interface TurnDownResult {
+    success: boolean
+    code: number
+    data?: {
+        title?: string
+        author?: string
+        content?: string
+    }
+    msg?: string
+}
+
+```
 
 ## Basic Usage
 
@@ -20,7 +28,10 @@ English | [简体中文](README.zh-CN.md)
 const { transformHtml2Markdown } = require('@ryan-liu/wechat-to-markdown')
 
 setTimeout(async () => {
-    const { title, author, content } = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
+    const articleData = await transformHtml2Markdown('https://mp.weixin.qq.com/s/9d5DWg7YdMHPvVl-2KLH2w')
+
+    const { title, author, content } = articleData.data
+
     console.log('title', title)
     console.log('author', author)
     console.log('content', content)
@@ -34,9 +45,12 @@ import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
 
 setup() {
     const getData = async () => {
-        const { title, author, content } = await transformHtml2Markdown(
+        const articleData = await transformHtml2Markdown(
             '/api/s/9d5DWg7YdMHPvVl-2KLH2w'
         )
+
+        const { title, author, content } = articleData.data
+
         console.log('title', title)
         console.log('author', author)
         console.log('content', content)
