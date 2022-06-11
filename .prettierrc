@@ -1,0 +1,14 @@
+{
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["src/**/*.tsx", "test/**/*.ts"],
+            "options": {
+                "parser": "typescript"
+            }
+        }
+    ]
+}
