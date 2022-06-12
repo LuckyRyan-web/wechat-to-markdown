@@ -350,10 +350,10 @@
     eslint-plugin-prettier "^4.0.0"
     typescript "^4.4.2"
 
-"@ryan-liu/wechat-to-markdown@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@ryan-liu/wechat-to-markdown/-/wechat-to-markdown-1.2.0.tgz#5a73c1092c2c51211ae242b0dc109ccd19b5ee6d"
-  integrity sha512-8NOKrxg4DEhcNQ2M3rt0X8h7zGkGX+I1ZVTjodvXJbmVOmL/NPjyFXrg12M3WDuL/pMq6bJVxabnJZ7G3/b3/Q==
+"@ryan-liu/wechat-to-markdown@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@ryan-liu/wechat-to-markdown/-/wechat-to-markdown-1.2.2.tgz#64e20a27a99d9b31c0f1a5c46749e6a64a0ad75a"
+  integrity sha512-bqTb731MxaaJrvRveE3ee79dAjd5dqRte6sf/GQPIi+x4w/NKuDrDlI2TTkj58XnMmjNP7s0hqrxpl49SY0Prw==
   dependencies:
     axios "^0.22.0"
     cheerio "^1.0.0-rc.10"

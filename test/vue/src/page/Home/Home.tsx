@@ -7,16 +7,18 @@
 import { defineComponent } from 'vue'
 // import classnames from 'classnames'
 // import style from './style.module.scss'
-import { transformHtml2Markdown } from '@ryan-liu/wechat-to-markdown'
+import transformHtml2Markdown, {
+    TurnDownResult,
+} from '@ryan-liu/wechat-to-markdown'
 // import { TurnDownResult } from '@ryan-liu/wechat-to-markdown'
 // import { transformHtml2Markdown } from '../../../../../dist/index'
 
 export default defineComponent({
     setup() {
         const getData = async () => {
-            const res = await transformHtml2Markdown(
+            const res = (await transformHtml2Markdown(
                 '/api/s/ItaKztMTzrotabFJjunVLQ'
-            )
+            )) as TurnDownResult
             console.log(res)
         }
 
