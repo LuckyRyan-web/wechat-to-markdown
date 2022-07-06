@@ -92,3 +92,7 @@ server: {
 ## 参考
 
 [html2md (一个非常完善的 url to markdown 项目)](https://github.com/helloworld-Co/html2md)
+
+## 待做事项
+
+1. 需要支持转化后的 markdown 代码可以替换图片地址到 cdn(微信的图片会有域名限制，非 weixin 域名不可以访问图片)
